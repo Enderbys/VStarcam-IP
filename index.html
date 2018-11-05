@@ -1,0 +1,33 @@
+<meta charset="UTF-8"/>
+<html>
+<script type="application/javascript">
+  var url = 'http://192.168.1.72:49950/videostream.cgi?'+
+            'loginuse=opera&loginpas=deep';
+
+  function reload() {
+    var vin = document.getElementById('in');
+    vin.src = url+'&' + Math.random();
+
+    var c = document.getElementById("myCanvas");
+    c.width=vin.width;
+    c.height=vin.height;
+    var ctx = c.getContext("2d");
+    ctx.drawImage(vin,0,0,640,480);
+    ctx.beginPath();
+    ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+    ctx.stroke();
+    setTimeout(reload,800);
+  }
+  setTimeout(reload,1000);
+</script>
+<head>
+  <title>display video from VStarcam IP camera</title>
+</head>
+<body>
+  <h1>
+    <img id='in'style='display:none'/>
+    <canvas id="myCanvas" style="border:1px solid #000000;">
+</canvas>
+  <h1>
+</body>
+</html>
